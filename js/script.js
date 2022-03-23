@@ -1,5 +1,5 @@
 function computerPlay() {
-    
+
     let randomNum = Math.floor(Math.random() * 3) + 1;
 
     switch (randomNum) {
@@ -48,3 +48,46 @@ function playRound(playerSelection, computerSelection) {
 		}
     }
 }
+
+
+function game() {
+    let computerScore = 0;
+    let playerScore = 0;
+    let result = "";
+
+    // Play 5 rounds
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Type 'Rock', 'Paper', or 'Scissors'", "");
+        let computerSelection = computerPlay();
+
+        if (playerSelection != null) {
+            result = playRound(playerSelection, computerSelection);
+            if (result.includes("Win")) {
+                ++playerScore;
+            }
+            else if (result.includes("Lose")) {
+                ++computerScore;
+            }
+        }
+        else {
+            return "cancelled";
+        }
+        
+        console.log("Computer Selection: " + computerSelection + "\n\n" +
+        "Round results: " + result + "\n" +
+         "Player Score: " + playerScore + "\n" +
+         "Computer Score: " + computerScore);
+    }
+
+    if (playerScore > computerScore) {
+        return "You Win!";
+    }
+    else if (playerScore < computerScore) {
+        return "You Lose!";
+    }
+    else {
+        return "It's a Tie!";
+    }
+}
+
+console.log(game());
