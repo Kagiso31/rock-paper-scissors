@@ -89,5 +89,3 @@ function game() {
         return "It's a Tie!";
     }
 }
-
-console.log(game());
